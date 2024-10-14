@@ -1,0 +1,69 @@
+Given a function and its surrounding context, generate a JSON object describing the function’s inputs, outputs, side effects, and dependencies. The JSON object should have the following structure:
+
+inputs: An array where each item is an object describing a function parameter with:
+
+name: The parameter’s name.
+type: The type of the parameter. This can be inferred from usage, name, or context clues.
+domain: Any constraints or restrictions on the input. For example, describe valid string formats, number ranges, array lengths, or other restrictions inferred from the function’s behavior and invocations.
+return: An array of objects, where each object describes a possible return value:
+
+type: The return type. Could be None if nothing is returned. Consider all execution paths and note if some return values differ.
+domain: Constraints on the return value, similar to the domain for inputs (e.g., email format, transformations of inputs).
+side_effects: Any persistent changes caused by the function outside of its return values. Side effects can be local (affecting the program’s state) or external (affecting the broader environment, such as network calls).
+
+local: A list of side effects within the program, such as changes to mutable input variables or global variables. Each entry should include:
+description: A description of the local side effect.
+origin: Where the side effect occurs, either within the function or from a sub-function call. Include notes on how the side effect could vary based on execution paths.
+network: A list of side effects involving external systems, such as database writes or API calls. Each entry should include:
+description: A description of the external side effect.
+origin: Where the external side effect occurs (directly in the function or a sub-function). Include possible variations based on execution paths.
+dependencies: A list of dependencies the function relies on, excluding core language features. This can include external packages, database connections, or imported functions. Each dependency should be represented as a string.
+
+{
+  "inputs": [
+    {
+      "name": "paramName",             // The name of the input parameter
+      "type": "paramType",             // The type of the parameter (e.g., string, int, custom type)
+      "domain": "paramConstraints"     // Human-readable constraints on the parameter, such as range, format, length, etc.
+    }
+    // Additional input parameters here...
+  ],
+  
+  "return": [
+    {
+      "type": "returnType",            // The type of the return value (e.g., string, int, None)
+      "domain": "returnConstraints"    // Constraints or notes on the return value (e.g., regex for a string, range, transformation of inputs)
+    }
+    // Add more return values if the function has multiple paths, or leave empty if there are no return values.
+  ],
+
+  "side_effects": {
+    "local": [
+      {
+        "description": "sideEffectDescription",  // Description of the local side effect (e.g., mutation of an input or global variable)
+        "origin": "sideEffectOrigin"             // The origin of the side effect (which part of the function causes it)
+      }
+      // Additional local side effects here...
+    ],
+    
+    "network": [
+      {
+        "description": "networkEffectDescription", // Description of external side effect (e.g., database write, API call)
+        "origin": "networkEffectOrigin"            // The origin of the network side effect (what part of the code triggers this)
+      }
+      // Additional network side effects here...
+    ]
+  },
+
+  "dependencies": [
+    "dependencyName1",     // Name of a non-core dependency (e.g., library, external API, etc.)
+    "dependencyName2"      // Additional dependencies as needed...
+  ]
+}
+
+
+
+
+
+
+

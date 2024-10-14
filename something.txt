@@ -1,0 +1,879 @@
+'Text for https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html:Title: numpy.argmax — NumPy v2.0 Manual
+URL Source: https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html
+
+Markdown Content:
+numpy.argmax — NumPy v2.0 Manual
+===============        
+
+[Skip to main content](https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html#main-content)
+
+Back to top  
+
+ Ctrl+K
+
+ [![Image 1: NumPy v2.0 Manual - Home](https://numpy.org/doc/2.0/_static/numpylogo.svg) ![Image 2: NumPy v2.0 Manual - Home](https://numpy.org/doc/2.0/_static/numpylogo_dark.svg)](https://numpy.org/doc/2.0/index.html)
+
+*   [User Guide](https://numpy.org/doc/2.0/user/index.html)
+*   [API reference](https://numpy.org/doc/2.0/reference/index.html)
+*   [Building from source](https://numpy.org/doc/2.0/building/index.html)
+*   [Development](https://numpy.org/doc/2.0/dev/index.html)
+*   [Release notes](https://numpy.org/doc/2.0/release.html)
+*   [Learn](https://numpy.org/numpy-tutorials/)
+*   More
+    *   [NEPs](https://numpy.org/neps)
+
+Choose version
+
+*   [GitHub](https://github.com/numpy/numpy "GitHub")
+
+*   [User Guide](https://numpy.org/doc/2.0/user/index.html)
+*   [API reference](https://numpy.org/doc/2.0/reference/index.html)
+*   [Building from source](https://numpy.org/doc/2.0/building/index.html)
+*   [Development](https://numpy.org/doc/2.0/dev/index.html)
+*   [Release notes](https://numpy.org/doc/2.0/release.html)
+*   [Learn](https://numpy.org/numpy-tutorials/)
+*   [NEPs](https://numpy.org/neps)
+
+Choose version
+
+*   [GitHub](https://github.com/numpy/numpy "GitHub")
+
+Section Navigation
+
+*   [NumPy’s module structure](https://numpy.org/doc/2.0/reference/module_structure.html)
+
+*   [Array objects](https://numpy.org/doc/2.0/reference/arrays.html)
+
+*   [Universal functions (`ufunc`)](https://numpy.org/doc/2.0/reference/ufuncs.html)
+
+*   [Routines and objects by topic](https://numpy.org/doc/2.0/reference/routines.html)
+    
+    *   [Constants](https://numpy.org/doc/2.0/reference/constants.html)
+    *   [Array creation routines](https://numpy.org/doc/2.0/reference/routines.array-creation.html)
+    *   [Array manipulation routines](https://numpy.org/doc/2.0/reference/routines.array-manipulation.html)
+    *   [Bit-wise operations](https://numpy.org/doc/2.0/reference/routines.bitwise.html)
+    *   [String functionality](https://numpy.org/doc/2.0/reference/routines.strings.html)
+    *   [Datetime support functions](https://numpy.org/doc/2.0/reference/routines.datetime.html)
+    *   [Data type routines](https://numpy.org/doc/2.0/reference/routines.dtype.html)
+    *   [Mathematical functions with automatic domain](https://numpy.org/doc/2.0/reference/routines.emath.html)
+    *   [Floating point error handling](https://numpy.org/doc/2.0/reference/routines.err.html)
+    *   [Exceptions and Warnings (`numpy.exceptions`)](https://numpy.org/doc/2.0/reference/routines.exceptions.html)
+    *   [Discrete Fourier Transform (`numpy.fft`)](https://numpy.org/doc/2.0/reference/routines.fft.html)
+    *   [Functional programming](https://numpy.org/doc/2.0/reference/routines.functional.html)
+    *   [Input and output](https://numpy.org/doc/2.0/reference/routines.io.html)
+    *   [Indexing routines](https://numpy.org/doc/2.0/reference/routines.indexing.html)
+    *   [Linear algebra (`numpy.linalg`)](https://numpy.org/doc/2.0/reference/routines.linalg.html)
+    *   [Logic functions](https://numpy.org/doc/2.0/reference/routines.logic.html)
+    *   [Masked array operations](https://numpy.org/doc/2.0/reference/routines.ma.html)
+    *   [Mathematical functions](https://numpy.org/doc/2.0/reference/routines.math.html)
+    *   [Miscellaneous routines](https://numpy.org/doc/2.0/reference/routines.other.html)
+    *   [Polynomials](https://numpy.org/doc/2.0/reference/routines.polynomials.html)
+    *   [Random sampling (`numpy.random`)](https://numpy.org/doc/2.0/reference/random/index.html)
+    *   [Set routines](https://numpy.org/doc/2.0/reference/routines.set.html)
+    *   [Sorting, searching, and counting](https://numpy.org/doc/2.0/reference/routines.sort.html)
+        
+        *   [numpy.sort](https://numpy.org/doc/2.0/reference/generated/numpy.sort.html)
+        *   [numpy.lexsort](https://numpy.org/doc/2.0/reference/generated/numpy.lexsort.html)
+        *   [numpy.argsort](https://numpy.org/doc/2.0/reference/generated/numpy.argsort.html)
+        *   [numpy.ndarray.sort](https://numpy.org/doc/2.0/reference/generated/numpy.ndarray.sort.html)
+        *   [numpy.sort\\_complex](https://numpy.org/doc/2.0/reference/generated/numpy.sort_complex.html)
+        *   [numpy.partition](https://numpy.org/doc/2.0/reference/generated/numpy.partition.html)
+        *   [numpy.argpartition](https://numpy.org/doc/2.0/reference/generated/numpy.argpartition.html)
+        *   [numpy.argmax](https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html#)
+        *   [numpy.nanargmax](https://numpy.org/doc/2.0/reference/generated/numpy.nanargmax.html)
+        *   [numpy.argmin](https://numpy.org/doc/2.0/reference/generated/numpy.argmin.html)
+        *   [numpy.nanargmin](https://numpy.org/doc/2.0/reference/generated/numpy.nanargmin.html)
+        *   [numpy.argwhere](https://numpy.org/doc/2.0/reference/generated/numpy.argwhere.html)
+        *   [numpy.nonzero](https://numpy.org/doc/2.0/reference/generated/numpy.nonzero.html)
+        *   [numpy.flatnonzero](https://numpy.org/doc/2.0/reference/generated/numpy.flatnonzero.html)
+        *   [numpy.where](https://numpy.org/doc/2.0/reference/generated/numpy.where.html)
+        *   [numpy.searchsorted](https://numpy.org/doc/2.0/reference/generated/numpy.searchsorted.html)
+        *   [numpy.extract](https://numpy.org/doc/2.0/reference/generated/numpy.extract.html)
+        *   [numpy.count\\_nonzero](https://numpy.org/doc/2.0/reference/generated/numpy.count_nonzero.html)
+        
+    *   [Statistics](https://numpy.org/doc/2.0/reference/routines.statistics.html)
+    *   [Test support (`numpy.testing`)](https://numpy.org/doc/2.0/reference/routines.testing.html)
+    *   [Window functions](https://numpy.org/doc/2.0/reference/routines.window.html)
+    
+
+*   [Typing (`numpy.typing`)](https://numpy.org/doc/2.0/reference/typing.html)
+*   [Packaging (`numpy.distutils`)](https://numpy.org/doc/2.0/reference/distutils.html)
+
+*   [NumPy C-API](https://numpy.org/doc/2.0/reference/c-api/index.html)
+
+*   [Array API standard compatibility](https://numpy.org/doc/2.0/reference/array_api.html)
+*   [CPU/SIMD optimizations](https://numpy.org/doc/2.0/reference/simd/index.html)
+*   [Global state](https://numpy.org/doc/2.0/reference/global_state.html)
+*   [NumPy security](https://numpy.org/doc/2.0/reference/security.html)
+*   [Status of `numpy.distutils` and migration advice](https://numpy.org/doc/2.0/reference/distutils_status_migration.html)
+*   [`numpy.distutils` user guide](https://numpy.org/doc/2.0/reference/distutils_guide.html)
+*   [NumPy and SWIG](https://numpy.org/doc/2.0/reference/swig.html)
+
+*   [](https://numpy.org/doc/2.0/index.html)
+*   [NumPy reference](https://numpy.org/doc/2.0/reference/index.html)
+
+*   [Sorting, searching, and counting](https://numpy.org/doc/2.0/reference/routines.sort.html)
+*   numpy.argmax
+
+numpy.argmax[#](https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html#numpy-argmax "Link to this heading")
+====================================================================================================================
+
+numpy.argmax(_a_, _axis=None_, _out=None_, _\\*_, _keepdims=<no value\\>_)[\\[source\\]](https://github.com/numpy/numpy/blob/v2.0.0/numpy/_core/fromnumeric.py#L1208-L1298)[#](https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html#numpy.argmax "Link to this definition")
+
+Returns the indices of the maximum values along an axis.
+
+Parameters:
+
+**a**array\\_like
+
+Input array.
+
+**axis**int, optional
+
+By default, the index is into the flattened array, otherwise along the specified axis.
+
+**out**array, optional
+
+If provided, the result will be inserted into this array. It should be of the appropriate shape and dtype.
+
+**keepdims**bool, optional
+
+If this is set to True, the axes which are reduced are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the array.
+
+New in version 1.22.0.
+
+Returns:
+
+**index\\_array**ndarray of ints
+
+Array of indices into the array. It has the same shape as `a.shape` with the dimension along _axis_ removed. If _keepdims_ is set to True, then the size of _axis_ will be 1 with the resulting array having same shape as `a.shape`.
+
+See also
+
+[`ndarray.argmax`](https://numpy.org/doc/2.0/reference/generated/numpy.ndarray.argmax.html#numpy.ndarray.argmax "numpy.ndarray.argmax"), [`argmin`](https://numpy.org/doc/2.0/reference/generated/numpy.argmin.html#numpy.argmin "numpy.argmin")
+
+[`amax`](https://numpy.org/doc/2.0/reference/generated/numpy.amax.html#numpy.amax "numpy.amax")
+
+The maximum value along a given axis.
+
+[`unravel_index`](https://numpy.org/doc/2.0/reference/generated/numpy.unravel_index.html#numpy.unravel_index "numpy.unravel_index")
+
+Convert a flat index into an index tuple.
+
+[`take_along_axis`](https://numpy.org/doc/2.0/reference/generated/numpy.take_along_axis.html#numpy.take_along_axis "numpy.take_along_axis")
+
+Apply `np.expand_dims(index_array, axis)` from argmax to an array as if by calling max.
+
+Notes
+
+In case of multiple occurrences of the maximum values, the indices corresponding to the first occurrence are returned.
+
+Examples
+
+\\>\\>\\> a \\= np.arange(6).reshape(2,3) + 10
+\\>\\>\\> a
+array(\\[\\[10, 11, 12\\],
+       \\[13, 14, 15\\]\\])
+\\>\\>\\> np.argmax(a)
+5
+\\>\\>\\> np.argmax(a, axis\\=0)
+array(\\[1, 1, 1\\])
+\\>\\>\\> np.argmax(a, axis\\=1)
+array(\\[2, 2\\])
+
+Indexes of the maximal elements of a N-dimensional array:
+
+\\>\\>\\> ind \\= np.unravel\\_index(np.argmax(a, axis\\=None), a.shape)
+\\>\\>\\> ind
+(1, 2)
+\\>\\>\\> a\\[ind\\]
+15
+
+\\>\\>\\> b \\= np.arange(6)
+\\>\\>\\> b\\[1\\] \\= 5
+\\>\\>\\> b
+array(\\[0, 5, 2, 3, 4, 5\\])
+\\>\\>\\> np.argmax(b)  \\# Only the first occurrence is returned.
+1
+
+\\>\\>\\> x \\= np.array(\\[\\[4,2,3\\], \\[1,0,3\\]\\])
+\\>\\>\\> index\\_array \\= np.argmax(x, axis\\=-1)
+\\>\\>\\> \\# Same as np.amax(x, axis=-1, keepdims=True)
+\\>\\>\\> np.take\\_along\\_axis(x, np.expand\\_dims(index\\_array, axis\\=-1), axis\\=-1)
+array(\\[\\[4\\],
+       \\[3\\]\\])
+\\>\\>\\> \\# Same as np.amax(x, axis=-1)
+\\>\\>\\> np.take\\_along\\_axis(x, np.expand\\_dims(index\\_array, axis\\=-1),
+...     axis\\=-1).squeeze(axis\\=-1)
+array(\\[4, 3\\])
+
+Setting _keepdims_ to _True_,
+
+\\>\\>\\> x \\= np.arange(24).reshape((2, 3, 4))
+\\>\\>\\> res \\= np.argmax(x, axis\\=1, keepdims\\=True)
+\\>\\>\\> res.shape
+(2, 1, 4)
+
+[previous numpy.argpartition](https://numpy.org/doc/2.0/reference/generated/numpy.argpartition.html "previous page")[next numpy.nanargmax](https://numpy.org/doc/2.0/reference/generated/numpy.nanargmax.html "next page")
+
+On this page
+
+*   [`argmax`](https://numpy.org/doc/2.0/reference/generated/numpy.argmax.html#numpy.argmax)
+
+© Copyright 2008-2024, NumPy Developers.
+
+Created using [Sphinx](https://www.sphinx-doc.org/) 7.2.6.
+
+Built with the [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html) 0.15.3.
+Text for https://www.geeksforgeeks.org/numpy-argmax-python/:Title: numpy.argmax() in Python
+
+URL Source: https://www.geeksforgeeks.org/numpy-argmax-python/
+
+Published Time: 2017-08-22 10:45:52
+
+Markdown Content:
+[Skip to content](https://www.geeksforgeeks.org/numpy-argmax-python/#main)
+
+[![Image 1: geeksforgeeks](https://media.geeksforgeeks.org/gfg-gg-logo.svg)](https://www.geeksforgeeks.org/)
+
+*   Tutorials
+    *   Python Tutorial
+        *   [Taking Input in Python](https://www.geeksforgeeks.org/taking-input-in-python/?ref=outind)
+        *   [Python Operators](https://www.geeksforgeeks.org/python-operators/?ref=outind)
+        *   Python Data Types
+            *   [Python Numbers](https://www.geeksforgeeks.org/python-numbers/?ref=outind)
+            *   [Python String](https://www.geeksforgeeks.org/python-string/?ref=outind)
+            *   [Python Lists](https://www.geeksforgeeks.org/python-lists/?ref=outind)
+            *   [Python Tuples](https://www.geeksforgeeks.org/python-tuples/?ref=outind)
+            *   [Sets in Python](https://www.geeksforgeeks.org/sets-in-python/?ref=outind)
+            *   [Python Dictionary](https://www.geeksforgeeks.org/python-dictionary/?ref=outind)
+        *   Python Loops and Control Flow
+            *   [Python Conditional Statements](https://www.geeksforgeeks.org/python3-if-if-else-nested-if-if-elif-statements/?ref=outind)
+            *   [Python Loops](https://www.geeksforgeeks.org/loops-in-python/?ref=outind)
+        *   [Python Functions](https://www.geeksforgeeks.org/python-functions/?ref=outind)
+        *   [Python OOPS Concept](https://www.geeksforgeeks.org/python-oops-concepts/?ref=outind)
+        *   Python Data Structures
+            *   [Python DSA](https://www.geeksforgeeks.org/python-data-structures-and-algorithms/?ref=outind)
+            *   [Linked List](https://www.geeksforgeeks.org/python-linked-list/?ref=outind)
+            *   [Stack](https://www.geeksforgeeks.org/stack-in-python/?ref=outind)
+            *   [Queue](https://www.geeksforgeeks.org/queue-in-python/?ref=outind)
+            *   [Tree](https://www.geeksforgeeks.org/binary-tree-data-structure/?ref=outind)
+            *   [Heap](https://www.geeksforgeeks.org/introduction-to-heap-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [Hashing](https://www.geeksforgeeks.org/introduction-to-hashing-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [Graph](https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [Sets](https://www.geeksforgeeks.org/introduction-to-set-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [Map](https://www.geeksforgeeks.org/introduction-to-map-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [Advance Data Structure](https://www.geeksforgeeks.org/advanced-data-structures/?ref=outind)
+            *   [Sorting Algorithms](https://www.geeksforgeeks.org/sorting-algorithms-in-python/?ref=outind)
+            *   [Searching Algorithms](https://www.geeksforgeeks.org/searching-algorithms/?ref=outind)
+        *   [Python Exception Handling](https://www.geeksforgeeks.org/python-exception-handling/?ref=outind)
+        *   [Python File Handling](https://www.geeksforgeeks.org/file-handling-python/?ref=outind)
+        *   Python Exercises
+            *   [Python List Exercise](https://www.geeksforgeeks.org/python-list-exercise/?ref=outind)
+            *   [Python String Exercise](https://www.geeksforgeeks.org/python-string-exercise/?ref=outind)
+            *   [Python Tuple Exercise](https://www.geeksforgeeks.org/python-tuple-exercise/?ref=outind)
+            *   [Python Dictionary Exercise](https://www.geeksforgeeks.org/python-dictionary-exercise/?ref=outind)
+            *   [Python Set Exercise](https://www.geeksforgeeks.org/python-set-exercise/?ref=outind)
+            *   [Python Design Patterns](https://www.geeksforgeeks.org/python-design-patterns/?ref=outind)
+            *   [Python Programming Examples](https://www.geeksforgeeks.org/python-programming-examples/?ref=outind)
+            *   [Python Practice Questions](https://www.geeksforgeeks.org/python-exercises-practice-questions-and-solutions/?ref=outind)
+    *   Java
+        *   Java Programming Language
+            *   [Java Tutorial](https://www.geeksforgeeks.org/java/?ref=outind)
+            *   [Data Types](https://www.geeksforgeeks.org/data-types-in-java/?ref=outind)
+            *   [Variables](https://www.geeksforgeeks.org/variables-in-java/?ref=outind)
+            *   [Operators](https://www.geeksforgeeks.org/operators-in-java/?ref=outind)
+            *   [Flow Control in Java](https://www.geeksforgeeks.org/decision-making-javaif-else-switch-break-continue-jump/?ref=outind)
+            *   [Loops in Java](https://www.geeksforgeeks.org/loops-in-java/?ref=outind)
+            *   [Methods](https://www.geeksforgeeks.org/methods-in-java/?ref=outind)
+            *   [Strings](https://www.geeksforgeeks.org/strings-in-java/?ref=outind)
+            *   [Arrays](https://www.geeksforgeeks.org/arrays-in-java/?ref=outind)
+            *   OOPs Concepts
+                *   [OOPs Concepts](https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/?ref=outind)
+                *   [Classes and Objects](https://www.geeksforgeeks.org/classes-objects-java/?ref=outind)
+                *   [Access Modifiers](https://www.geeksforgeeks.org/access-modifiers-java/?ref=outind)
+                *   [Inheritance](https://www.geeksforgeeks.org/inheritance-in-java/?ref=outind)
+                *   [Abstraction](https://www.geeksforgeeks.org/abstraction-in-java-2/?ref=outind)
+                *   [Encapsulation](https://www.geeksforgeeks.org/encapsulation-in-java/?ref=outind)
+                *   [Polymorphism](https://www.geeksforgeeks.org/polymorphism-in-java/?ref=outind)
+            *   [Interface](https://www.geeksforgeeks.org/interfaces-in-java/?ref=outind)
+            *   [Packages](https://www.geeksforgeeks.org/packages-in-java/?ref=outind)
+            *   [Multithreading](https://www.geeksforgeeks.org/multithreading-in-java/?ref=outind)
+            *   [File Handling](https://www.geeksforgeeks.org/file-handling-in-java/?ref=outind)
+            *   [Regular Expression](https://www.geeksforgeeks.org/regular-expressions-in-java/?ref=outind)
+        *   Java Collections
+            *   [Java Collections](https://www.geeksforgeeks.org/collections-in-java-2/?ref=outind)
+            *   [Collection Class](https://www.geeksforgeeks.org/collections-class-in-java/?ref=outind)
+            *   [List Interface](https://www.geeksforgeeks.org/list-interface-java-examples/?ref=outind)
+            *   [ArrayList](https://www.geeksforgeeks.org/arraylist-in-java/?ref=outind)
+            *   [LinkedList Class](https://www.geeksforgeeks.org/linked-list-in-java/?ref=outind)
+            *   [Queue Interface](https://www.geeksforgeeks.org/queue-interface-java/?ref=outind)
+            *   [Set Interface](https://www.geeksforgeeks.org/set-in-java/?ref=outind)
+            *   [HashSet Class](https://www.geeksforgeeks.org/hashset-in-java/?ref=outind)
+            *   [Map Interface](https://www.geeksforgeeks.org/map-interface-java-examples/?ref=outind)
+            *   [HashMap Class](https://www.geeksforgeeks.org/java-util-hashmap-in-java-with-examples/?ref=outind)
+            *   [HashTable Class](https://www.geeksforgeeks.org/hashtable-in-java/?ref=outind)
+            *   [Iterator](https://www.geeksforgeeks.org/iterators-in-java/?ref=outind)
+            *   [Comparator](https://www.geeksforgeeks.org/comparator-interface-java/?ref=outind)
+            *   [Collection Interview Questions](https://www.geeksforgeeks.org/java-collections-interview-questions/?ref=outind)
+        *   [Java 8 Tutorial](https://www.geeksforgeeks.org/java-8-features/?ref=outind)
+        *   Java Programs
+            *   [Java Programming Examples](https://www.geeksforgeeks.org/java-programming-examples/?ref=outind)
+            *   [Java Array Programs](https://www.geeksforgeeks.org/java-array-programs/?ref=outind)
+            *   [Java String Programs](https://www.geeksforgeeks.org/java-string-programs/?ref=outind)
+            *   [Java Date-Time Programs](https://www.geeksforgeeks.org/java-date-time-programs/?ref=outind)
+            *   [Java File Handling Programs](https://www.geeksforgeeks.org/java-file-handling-programs/?ref=outind)
+            *   [Java Collection Programs](https://www.geeksforgeeks.org/java-collection-programs/?ref=outind)
+            *   [Java JDBC Programs](https://www.geeksforgeeks.org/java-jdbc-programs/?ref=outind)
+            *   [Java Apache POI Programs](https://www.geeksforgeeks.org/java-apache-poi-programs/?ref=outind)
+            *   [Java OpenCV Programs](https://www.geeksforgeeks.org/java-opencv-programs/?ref=outind)
+        *   Java Interview Questions
+            *   [Java Interview Questions](https://www.geeksforgeeks.org/java-interview-questions/?ref=outind)
+            *   [Core Java Interview Questions-Freshers](https://www.geeksforgeeks.org/core-java-interview-questions-for-freshers/?ref=outind)
+            *   [Java Multithreading Interview Questions](https://www.geeksforgeeks.org/top-20-java-multithreading-interview-questions-answers/?ref=outind)
+            *   [OOPs Interview Questions and Answers](https://www.geeksforgeeks.org/oops-interview-questions/?ref=outind)
+        *   [Java Exercises](https://www.geeksforgeeks.org/java-exercises/?ref=outind)
+        *   Java Quiz
+            *   [Java Quiz](https://www.geeksforgeeks.org/quizzes/50-java-language-mcqs-with-answers-2/?ref=outind)
+            *   [Core Java MCQ](https://www.geeksforgeeks.org/java-multiple-choice-questions/?ref=outind)
+        *   [Java Projects](https://www.geeksforgeeks.org/java-projects/?ref=outind)
+        *   Advance Java
+            *   [Spring Tutorial](https://www.geeksforgeeks.org/spring/?ref=outind)
+            *   [Spring Boot Tutorial](https://www.geeksforgeeks.org/spring-boot/?ref=outind)
+            *   [Spring Boot Interview Questions](https://www.geeksforgeeks.org/spring-boot-interview-questions/?ref=outind)
+            *   [Spring MVC Tutorial](https://www.geeksforgeeks.org/spring-mvc/?ref=outind)
+            *   [Spring MVC Interview Questions](https://www.geeksforgeeks.org/spring-mvc-interview-questions/?ref=outind)
+            *   [Hibernate Tutorial](https://www.geeksforgeeks.org/hibernate-tutorial/?ref=outind)
+            *   [Hibernate Interview Questions](https://www.geeksforgeeks.org/hibernate-interview-questions/?ref=outind)
+    *   Programming Languages
+        *   [C](https://www.geeksforgeeks.org/c-programming-language/?ref=outind)
+        *   [C++](https://www.geeksforgeeks.org/c-plus-plus/?ref=outind)
+        *   [JavaScript](https://www.geeksforgeeks.org/learn-javascript-js-roadmap-for-beginners/?ref=outind)
+        *   [PHP](https://www.geeksforgeeks.org/php-tutorial/?ref=outind)
+        *   [R Tutorial](https://www.geeksforgeeks.org/r-tutorial/?ref=outind)
+        *   [C#](https://www.geeksforgeeks.org/csharp-programming-language/?ref=outind)
+        *   [SQL](https://www.geeksforgeeks.org/sql-tutorial/?ref=outind)
+        *   [Scala](https://www.geeksforgeeks.org/scala-programming-language/?ref=outind)
+        *   [Perl](https://www.geeksforgeeks.org/perl-programming-language/?ref=outind)
+        *   [Go Language](https://www.geeksforgeeks.org/golang/?ref=outind)
+        *   [Kotlin](https://www.geeksforgeeks.org/kotlin-programming-language/?ref=outind)
+    *   System Design
+        *   System Design Tutorial
+            *   [What is System Design](https://www.geeksforgeeks.org/what-is-system-design-learn-system-design/?ref=outind)
+            *   [Key Terminologies in System Design](https://www.geeksforgeeks.org/important-key-concepts-and-terminologies-learn-system-design/?ref=outind)
+            *   [Analysis and Architecture of Systems](https://www.geeksforgeeks.org/analysis-of-monolithic-and-distributed-systems-learn-system-design/?ref=outind)
+            *   [Scalability in System Design](https://www.geeksforgeeks.org/what-is-scalability-and-how-to-achieve-it-learn-system-design/?ref=outind)
+            *   [Databases in System Design](https://www.geeksforgeeks.org/complete-reference-to-databases-in-designing-systems/?ref=outind)
+            *   [High Level Design or HLD](https://www.geeksforgeeks.org/what-is-high-level-design-learn-system-design/?ref=outind)
+            *   [Low Level Design or LLD](https://www.geeksforgeeks.org/what-is-low-level-design-or-lld-learn-system-design/?ref=outind)
+            *   [Case Studies in Designing Systems](https://www.geeksforgeeks.org/top-10-system-design-interview-questions-and-answers/?ref=outind)
+            *   [Complete System Design Tutorial](https://www.geeksforgeeks.org/system-design-tutorial/?ref=outind)
+        *   [Software Design Patterns](https://www.geeksforgeeks.org/software-design-patterns/?ref=outind)
+        *   [System Design Roadmap](https://www.geeksforgeeks.org/complete-roadmap-to-learn-system-design/?ref=outind)
+        *   [Top 10 System Design Interview Questions and Answers](https://www.geeksforgeeks.org/top-10-system-design-interview-questions-and-answers/?ref=outind)
+    *   Interview Corner
+        *   [Company Preparation](https://www.geeksforgeeks.org/company-preparation/?ref=outind)
+        *   [Top Topics](https://www.geeksforgeeks.org/interview-preparation-for-software-developer/?ref=outind)
+        *   [Practice Company Questions](https://practice.geeksforgeeks.org/company-tags/?ref=outind)
+        *   [Interview Experiences](https://www.geeksforgeeks.org/company-interview-corner/?ref=outind)
+        *   [Experienced Interviews](https://www.geeksforgeeks.org/experienced-interview-experiences-company-wise/?ref=outind)
+        *   [Internship Interviews](https://www.geeksforgeeks.org/internship-interview-experiences-company-wise/?ref=outind)
+        *   [Competitive Programming](https://www.geeksforgeeks.org/competitive-programming-a-complete-guide/?ref=outind)
+        *   [Multiple Choice Quizzes](https://www.geeksforgeeks.org/quiz-corner-gq/?ref=outind)
+        *   [Aptitude for Placements](https://www.geeksforgeeks.org/aptitude-questions-and-answers/?ref=outind)
+    *   Computer Science Subjects
+        *   [Operating System](https://www.geeksforgeeks.org/operating-systems/?ref=outind)
+        *   [DBMS](https://www.geeksforgeeks.org/dbms/?ref=outind)
+        *   [Computer Networks](https://www.geeksforgeeks.org/computer-network-tutorials/?ref=outind)
+        *   [Engineering Mathematics](https://www.geeksforgeeks.org/engineering-mathematics-tutorials/?ref=outind)
+        *   [Computer Organization and Architecture](https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/?ref=outind)
+        *   [Theory of Computation](https://www.geeksforgeeks.org/theory-of-computation-automata-tutorials/?ref=outind)
+        *   [Compiler Design](https://www.geeksforgeeks.org/compiler-design-tutorials/?ref=outind)
+        *   [Digital Logic](https://www.geeksforgeeks.org/digital-electronics-logic-design-tutorials/#blg/?ref=outind)
+        *   [Software Engineering](https://www.geeksforgeeks.org/software-engineering/?ref=outind)
+    *   DevOps
+        *   [GIT](https://www.geeksforgeeks.org/git-tutorial/?ref=outind)
+        *   [AWS](https://www.geeksforgeeks.org/aws-tutorial/?ref=outind)
+        *   [Docker](https://www.geeksforgeeks.org/docker-tutorial/?ref=outind)
+        *   [Kubernetes](https://www.geeksforgeeks.org/kubernetes-tutorial/?ref=outind)
+        *   [Microsoft Azure Tutorial](https://www.geeksforgeeks.org/microsoft-azure/?ref=outind)
+        *   [Google Cloud Platform](https://www.geeksforgeeks.org/google-cloud-platform-tutorial/?ref=outind)
+    *   Linux
+        *   [Linux Tutorial](https://www.geeksforgeeks.org/linux-tutorial/?ref=outind)
+        *   [Linux Commands A-Z](https://www.geeksforgeeks.org/linux-commands/?ref=outind)
+        *   [Linux Commands Cheatsheet](https://www.geeksforgeeks.org/linux-commands-cheat-sheet/?ref=outind)
+        *   [File Permission Commands](https://www.geeksforgeeks.org/permissions-in-linux/?ref=outind)
+        *   [Linux System Administration](https://www.geeksforgeeks.org/beginners-guide-to-linux-system-administration/?ref=outind)
+        *   [Linux File System](https://www.geeksforgeeks.org/linux-file-system/?ref=outind)
+        *   [Linux Shell Scripting](https://www.geeksforgeeks.org/introduction-linux-shell-shell-scripting/?ref=outind)
+        *   [Linux Networking](https://www.geeksforgeeks.org/network-configuration-trouble-shooting-commands-linux/?ref=outind)
+        *   [Linux Interview Questions](https://www.geeksforgeeks.org/linux-interview-questions/?ref=outind)
+    *   Software Testing
+        *   [Software Testing Tutorial](https://www.geeksforgeeks.org/software-testing-tutorial/?ref=outind)
+        *   [Software Engineering Tutorial](https://www.geeksforgeeks.org/software-engineering/?ref=outind)
+        *   [Testing Interview Questions](https://www.geeksforgeeks.org/software-testing-interview-questions/?ref=outind)
+        *   [Jira](https://www.geeksforgeeks.org/jira-tutorial/?ref=outind)
+    *   Databases
+        *   [DBMS Tutorial](https://www.geeksforgeeks.org/dbms/?ref=outind)
+        *   [SQL Tutorial](https://www.geeksforgeeks.org/sql-tutorial/?ref=outind)
+        *   [PostgreSQL Tutorial](https://www.geeksforgeeks.org/postgresql-tutorial/?ref=outind)
+        *   [MongoDB Tutorial](https://www.geeksforgeeks.org/mongodb-tutorial/?ref=outind)
+        *   [SQL Interview Questions](https://www.geeksforgeeks.org/sql-interview-questions/?ref=outind)
+        *   [MySQL Interview Questions](https://www.geeksforgeeks.org/mysql-interview-questions/?ref=outind)
+        *   [PL/SQL Interview Questions](https://www.geeksforgeeks.org/pl-sql-interview-questions/?ref=outind)
+    *   Android
+        *   [Android Tutorial](https://www.geeksforgeeks.org/android-tutorial/?ref=outind)
+        *   [Android Studio Tutorial](https://www.geeksforgeeks.org/android-studio-tutorial/?ref=outind)
+        *   [Kotlin For Android](https://www.geeksforgeeks.org/kotlin-android-tutorial/?ref=outind)
+        *   [Android Projects](https://www.geeksforgeeks.org/android-projects-from-basic-to-advanced-level/?ref=outind)
+        *   [Android Interview Questions](https://www.geeksforgeeks.org/top-50-android-interview-questions-answers-sde-i-to-sde-iii/?ref=outind)
+        *   [6 Weeks of Android App Development](https://www.geeksforgeeks.org/6-weeks-of-android-app-development-free-project-based-learning/?ref=outind)
+    *   Excel
+        *   [MS Excel Tutorial](https://www.geeksforgeeks.org/excel-tutorial/?ref=outind)
+        *   [Introduction to MS Excel](https://www.geeksforgeeks.org/introduction-to-ms-excel/?ref=outind)
+        *   [Data Analysis in Excel](https://www.geeksforgeeks.org/data-analysis-in-excel/?ref=outind)
+        *   [Basic Excel Formulas & Functions](https://www.geeksforgeeks.org/basic-excel-formulas-and-functions/?ref=outind)
+        *   [Data Analysis in Advanced Excel](https://www.geeksforgeeks.org/instant-data-analysis-in-advanced-excel/?ref=outind)
+        *   [Workbooks](https://www.geeksforgeeks.org/workbooks-in-microsoft-excel/?ref=outind)
+        *   [Statistical Functions](https://www.geeksforgeeks.org/statistical-functions-in-excel-with-examples/?ref=outind)
+        *   [Data Visualization in Excel](https://www.geeksforgeeks.org/data-visualization-in-excel/?ref=outind)
+        *   [Pivot Tables in Excel](https://www.geeksforgeeks.org/pivot-tables-in-excel/?ref=outind)
+        *   [Excel Spreadsheets in Python](https://www.geeksforgeeks.org/working-with-excel-spreadsheets-in-python/?ref=outind)
+        *   [Basic Excel Shortcuts](https://www.geeksforgeeks.org/basic-excel-shortcuts/?ref=outind)
+    *   Mathematics
+        *   [Number System](https://www.geeksforgeeks.org/number-theory/?ref=outind)
+        *   [Algebra](https://www.geeksforgeeks.org/algebra/?ref=outind)
+        *   [Linear Algebra](https://www.geeksforgeeks.org/linear-algebra/?ref=outind)
+        *   [Trigonometry](https://www.geeksforgeeks.org/math-trigonometry/?ref=outind)
+        *   [Set Theory](https://www.geeksforgeeks.org/set-theory/?ref=outind)
+        *   [Statistics](https://www.geeksforgeeks.org/statistics/?ref=outind)
+        *   [Probability](https://www.geeksforgeeks.org/probability-in-maths/?ref=outind)
+        *   [Geometry](https://www.geeksforgeeks.org/geometry/?ref=outind)
+        *   [Mensuration](https://www.geeksforgeeks.org/mensuration/?ref=outind)
+        *   [Logarithms](https://www.geeksforgeeks.org/logarithms/?ref=outind)
+        *   [Calculus](https://www.geeksforgeeks.org/math-calculus/?ref=outind)
+*   DSA
+    *   Data Structures
+        *   [Arrays](https://www.geeksforgeeks.org/complete-guide-to-arrays-data-structure/?ref=outind)
+        *   [Matrix](https://www.geeksforgeeks.org/introduction-to-matrix-or-grid-data-structure-and-algorithms-tutorial/?ref=outind)
+        *   [Strings](https://www.geeksforgeeks.org/complete-guide-to-string-data-structure/?ref=outind)
+        *   Linked List
+            *   [Singly Linked List](https://www.geeksforgeeks.org/singly-linked-list-definition-meaning-dsa/?ref=outind)
+            *   [Doubly Linked List](https://www.geeksforgeeks.org/introduction-and-insertion-in-a-doubly-linked-list/?=ref=outind)
+            *   [Circular Linked List](https://www.geeksforgeeks.org/circular-linked-list/?ref=outind)
+            *   [Doubly Circular Linked List](https://www.geeksforgeeks.org/insertion-in-doubly-circular-linked-list/?ref=outind)
+            *   [Linked List Tutorial](https://www.geeksforgeeks.org/introduction-to-linked-list-data-structure-and-algorithm-tutorial/?ref=outind)
+        *   [Stack](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Queue](https://www.geeksforgeeks.org/introduction-to-queue-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   Tree
+            *   [Generic Tree](https://www.geeksforgeeks.org/generic-treesn-array-trees/?ref=outind)
+            *   [Binary Tree](https://www.geeksforgeeks.org/introduction-to-binary-tree-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [Binary Search Tree](https://www.geeksforgeeks.org/introduction-to-binary-search-tree-data-structure-and-algorithm-tutorials/?ref=outind)
+            *   [AVL Tree](https://www.geeksforgeeks.org/introduction-to-avl-tree/?ref=outind)
+            *   [B Tree](https://www.geeksforgeeks.org/introduction-of-b-tree-2/?ref=outind)
+            *   [B+ Tree](https://www.geeksforgeeks.org/introduction-of-b-tree/?ref=outind)
+            *   [Red Black Tree](https://www.geeksforgeeks.org/introduction-to-red-black-tree/?ref=outind)
+            *   [Tree Data Structure Tutorial](https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Heap](https://www.geeksforgeeks.org/introduction-to-heap-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Hashing](https://www.geeksforgeeks.org/introduction-to-hashing-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Graph](https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Set Data Structure](https://www.geeksforgeeks.org/introduction-to-set-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Map Data Structure](https://www.geeksforgeeks.org/introduction-to-map-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Advanced Data Structure](https://www.geeksforgeeks.org/advanced-data-structures/?ref=outind)
+        *   [Data Structures Tutorial](https://www.geeksforgeeks.org/introduction-to-data-structures/?ref=outind)
+    *   Algorithms
+        *   Analysis of Algorithms
+            *   [Design and Analysis of Algorithms](https://www.geeksforgeeks.org/design-and-analysis-of-algorithms/?ref=outind)
+            *   [Asymptotic Analysis](https://www.geeksforgeeks.org/asymptotic-notation-and-analysis-based-on-input-size-of-algorithms/?ref=outind)
+            *   [Asymptotic Notations](https://www.geeksforgeeks.org/types-of-asymptotic-notations-in-complexity-analysis-of-algorithms/?ref=outind)
+            *   [Worst, Average and Best Cases](https://www.geeksforgeeks.org/worst-average-and-best-case-analysis-of-algorithms/?ref=outind)
+        *   Searching Algorithms
+            *   [Linear Search](https://www.geeksforgeeks.org/linear-search/?ref=outind)
+            *   [Binary Search](https://www.geeksforgeeks.org/binary-search/?ref=outind)
+            *   [Searching Algorithms Tutorial](https://www.geeksforgeeks.org/searching-algorithms/?ref=outind)
+        *   Sorting Algorithms
+            *   [Selection Sort](https://www.geeksforgeeks.org/selection-sort/?ref=outind)
+            *   [Bubble Sort](https://www.geeksforgeeks.org/bubble-sort/?ref=outind)
+            *   [Insertion Sort](https://www.geeksforgeeks.org/insertion-sort/?ref=outind)
+            *   [Merge Sort](https://www.geeksforgeeks.org/merge-sort/?ref=outind)
+            *   [Quick Sort](https://www.geeksforgeeks.org/quick-sort/?ref=outind)
+            *   [Heap Sort](https://www.geeksforgeeks.org/heap-sort/?ref=outind)
+            *   [Counting Sort](https://www.geeksforgeeks.org/counting-sort/?ref=outind)
+            *   [Radix Sort](https://www.geeksforgeeks.org/radix-sort/?ref=outind)
+            *   [Bucket Sort](https://www.geeksforgeeks.org/bucket-sort-2/?ref=outind)
+            *   [Sorting Algorithms Tutorial](https://www.geeksforgeeks.org/introduction-to-sorting-algorithm/?ref=outind)
+        *   [Greedy Algorithms](https://www.geeksforgeeks.org/introduction-to-greedy-algorithm-data-structures-and-algorithm-tutorials/?ref=outind)
+        *   [Dynamic Programming](https://www.geeksforgeeks.org/introduction-to-dynamic-programming-data-structures-and-algorithm-tutorials/?ref=outind)
+        *   [Graph Algorithms](https://www.geeksforgeeks.org/introduction-to-graphs-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Pattern Searching](https://www.geeksforgeeks.org/introduction-to-pattern-searching-data-structure-and-algorithm-tutorial/?ref=outind)
+        *   [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Backtracking](https://www.geeksforgeeks.org/introduction-to-backtracking-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Divide and Conquer](https://www.geeksforgeeks.org/introduction-to-divide-and-conquer-algorithm-data-structure-and-algorithm-tutorials/?ref=outind)
+        *   [Mathematical Algorithms](https://www.geeksforgeeks.org/mathematical-algorithms/?ref=outind)
+        *   [Geometric Algorithms](https://www.geeksforgeeks.org/geometric-algorithms/?ref=outind)
+        *   [Bitwise Algorithms](https://www.geeksforgeeks.org/introduction-to-bitwise-algorithms-data-structures-and-algorithms-tutorial/?ref=outind)
+        *   [Randomized Algorithms](https://www.geeksforgeeks.org/randomized-algorithms/?ref=outind)
+        *   [Branch and Bound](https://www.geeksforgeeks.org/introduction-to-branch-and-bound-data-structures-and-algorithms-tutorial/?ref=outind)
+        *   [Algorithms Tutorial](https://www.geeksforgeeks.org/introduction-to-algorithms/?ref=outind)
+    *   [DSA Tutorial](https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/?ref=outind)
+    *   Practice
+        *   [All DSA Problems](https://www.geeksforgeeks.org/explore?page=1&sortBy=submissions&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+        *   [Problem of the Day](https://www.geeksforgeeks.org/problem-of-the-day?itm_source=geeksforgeeksitm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+        *   Company Wise Coding Practice
+            *   [Amazon](https://www.geeksforgeeks.org/explore?page=1&company=Amazon&sortBy=submissions&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Microsoft](https://www.geeksforgeeks.org/explore?page=1&company=Microsoft&sortBy=submissions&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Flipkart](https://www.geeksforgeeks.org/explore?page=1&company=Flipkart&sortBy=submissions&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Explore All](https://www.geeksforgeeks.org/explore?page=1&sortBy=submissions&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+        *   [GfG SDE Sheet](https://www.geeksforgeeks.org/explore?page=1&curated[]=1&sortBy=submissions&curated_names[]=SDE%20Sheet?itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+        *   Practice Problems Difficulty Wise
+            *   [School](https://www.geeksforgeeks.org/explore?page=1&difficulty=School&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Basic](https://www.geeksforgeeks.org/explore?page=1&difficulty=Basic&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Easy](https://www.geeksforgeeks.org/explore?page=1&difficulty=Easy&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Medium](https://www.geeksforgeeks.org/explore?page=1&difficulty=Medium&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Hard](https://www.geeksforgeeks.org/explore?page=1&difficulty=Hard&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+        *   Language Wise Coding Practice
+            *   [CPP](https://www.geeksforgeeks.org/explore?page=1&category=CPP&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Java](https://www.geeksforgeeks.org/explore?page=1&category=Java&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Python](https://www.geeksforgeeks.org/explore?category=python&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+        *   Curated DSA Lists
+            *   [Beginner\'s DSA Sheet](https://www.geeksforgeeks.org/explore?page=1&sprint=ca8ae412173dbd8346c26a0295d098fd&sortBy=submissions&sprint_name=Beginner%27s%20DSA%20Sheet&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Top 50 Array Problems](https://www.geeksforgeeks.org/explore?page=1&sprint=50746f92a895c22a50504ac0c1fb9c84&sortBy=submissions&sprint_name=Top%2050%20Array%20Problems&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Top 50 String Problems](https://www.geeksforgeeks.org/explore?page=1&sprint=57184072610b884e5df3584cc534115d&sortBy=submissions&sprint_name=Top%2050%20String%20Problems&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Top 50 DP Problems](https://www.geeksforgeeks.org/explore?page=1&sprint=93d672753b74440c7427214c8ebf866d&sortBy=submissions&sprint_name=Top%2050%20DP%20Problems&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Top 50 Graph Problems](https://www.geeksforgeeks.org/explore?page=1&sprint=405e9db0f353691ad3b2d546b19145e9&sortBy=submissions&sprint_name=Top%2050%20Graph%20Problems&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+            *   [Top 50 Tree Problems](https://www.geeksforgeeks.org/explore?page=1&sprint=5f24de84b65bf7c4f4399c8111e26b81&sortBy=submissions&sprint_name=Top%2050%20Tree%20Problems&itm_source=geeksforgeeks&itm_medium=main_header_outIndia&itm_campaign=DSA_Header)
+    *   [Competitive Programming](https://www.geeksforgeeks.org/competitive-programming-a-complete-guide/?ref=outind)
+    *   Company Wise SDE Sheets
+        *   [Facebook SDE Sheet](https://www.geeksforgeeks.org/facebookmeta-sde-sheet-interview-questions-and-answers/?ref=outind)
+        *   [Amazon SDE Sheet](https://www.geeksforgeeks.org/amazon-sde-sheet-interview-questions-and-answers/?ref=outind)
+        *   [Apple SDE Sheet](https://www.geeksforgeeks.org/apple-sde-sheet-interview-questions-and-answers/?ref=outind)
+        *   [Netflix SDE Sheet](https://www.geeksforgeeks.org/netflix-sde-sheet-interview-questions-and-answers/?ref=outind)
+        *   [Google SDE Sheet](https://www.geeksforgeeks.org/google-sde-sheet-interview-questions-and-answers/?ref=outind)
+    *   DSA Cheat Sheets
+        *   [SDE Sheet](https://www.geeksforgeeks.org/sde-sheet-a-complete-guide-for-sde-preparation/?ref=outind)
+        *   [DSA Sheet for Beginners](https://www.geeksforgeeks.org/most-asked-dsa-interview-problems-for-beginners/?ref=outind)
+        *   [FAANG Coding Sheet](https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/?ref=outind)
+        *   [Product-Based Coding Sheet](https://www.geeksforgeeks.org/must-do-coding-questions-for-product-based-companies/?ref=outind)
+        *   [Company-Wise Preparation Sheet](https://www.geeksforgeeks.org/must-coding-questions-company-wise/?ref=outind)
+    *   [Top Interview Questions](https://www.geeksforgeeks.org/top-100-data-structure-and-algorithms-dsa-interview-questions-topic-wise/?ref=outind)
+    *   Puzzles
+        *   [All Puzzles](https://www.geeksforgeeks.org/puzzles/?ref=outind)
+        *   [Top 100 Puzzles Asked In Interviews](https://www.geeksforgeeks.org/top-100-puzzles-asked-in-interviews/?ref=outind)
+        *   [Top 20 Puzzles Commonly Asked During SDE Interviews](https://www.geeksforgeeks.org/top-20-puzzles-commonly-asked-during-sde-interviews/?ref=outind)
+*   Data Science
+    *   [Python Tutorial](https://www.geeksforgeeks.org/python-programming-language/?ref=outind)
+    *   [R Tutorial](https://www.geeksforgeeks.org/r-tutorial/?ref=outind)
+    *   [Machine Learning](https://www.geeksforgeeks.org/machine-learning/?ref=outind)
+    *   [Data Science using Python](https://www.geeksforgeeks.org/data-science-with-python-tutorial/?ref=outind)
+    *   [Data Science using R](https://www.geeksforgeeks.org/r-programming-for-data-science/?ref=outind)
+    *   Data Science Packages
+        *   [Pandas Tutorial](https://www.geeksforgeeks.org/pandas-tutorial/?ref=outind)
+        *   [NumPy Tutorial](https://www.geeksforgeeks.org/numpy-tutorial/?ref=outind)
+    *   Data Visualization
+        *   [Python Data Visualization Tutorial](https://www.geeksforgeeks.org/python-data-visualization-tutorial/?ref=outind)
+        *   [Data Visualization with R](https://www.geeksforgeeks.org/data-visualization-in-r/?ref=outind)
+    *   Data Analysis
+        *   [Data Analysis with Python](https://www.geeksforgeeks.org/data-analysis-with-python/?ref=outind)
+        *   [Data Analysis with R](https://www.geeksforgeeks.org/data-analysis-using-r/?ref=outind)
+    *   [Deep Learning](https://www.geeksforgeeks.org/deep-learning-tutorial/?ref=outind)
+    *   [NLP Tutorial](https://www.geeksforgeeks.org/natural-language-processing-nlp-tutorial/?ref=outind)
+*   Web Tech
+    *   [HTML Tutorial](https://www.geeksforgeeks.org/html-tutorial/?ref=outind)
+    *   [CSS Tutorial](https://www.geeksforgeeks.org/css-tutorial/?ref=outind)
+    *   [JavaScript Tutorial](https://www.geeksforgeeks.org/javascript/?ref=outind)
+    *   [PHP Tutorial](https://www.geeksforgeeks.org/php-tutorial/?ref=outind)
+    *   [ReactJS Tutorial](https://www.geeksforgeeks.org/react-tutorial/?ref=outind)
+    *   [NodeJS Tutorial](https://www.geeksforgeeks.org/nodejs/?ref=outind)
+    *   [AngularJS Tutorial](https://www.geeksforgeeks.org/introduction-to-angularjs/?ref=outind)
+    *   [Bootstrap Tutorial](https://www.geeksforgeeks.org/bootstrap/?ref=outind)
+    *   [Typescript](https://www.geeksforgeeks.org/typescript/?ref=outind)
+    *   Web Development Using Python
+        *   Django
+            *   [Django Tutorial](https://www.geeksforgeeks.org/django-tutorial/?ref=outind)
+            *   [Django Projects](https://www.geeksforgeeks.org/top-django-projects-for-beginners/?ref=outind)
+            *   [Django Interview Questions](https://www.geeksforgeeks.org/django-interview-questions/?ref=outind)
+        *   Flask
+            *   [Flask Tutorial](https://www.geeksforgeeks.org/flask-tutorial/?ref=outind)
+            *   [Flask Projects](https://www.geeksforgeeks.org/flask-projects/?ref=outind)
+            *   [Flask Interview Questions](https://www.geeksforgeeks.org/flask-interview-questions-and-answers/?ref=outind)
+        *   [Postman](https://www.geeksforgeeks.org/postman-tutorial/?ref=outind)
+        *   [Github](https://www.geeksforgeeks.org/introduction-to-github/?ref=outind)
+    *   [Wordpress Tutorial](https://www.geeksforgeeks.org/wordpress-tutorial/?ref=outind)
+    *   [Web Design](https://www.geeksforgeeks.org/web-design/?ref=outind)
+    *   Cheat Sheets
+        *   [HTML Cheat Sheet](https://www.geeksforgeeks.org/html-cheat-sheet-a-basic-guide-to-html/?ref=outind)
+        *   [CSS Cheat Sheet](https://www.geeksforgeeks.org/css-cheat-sheet-a-basic-guide-to-css/?ref=outind)
+        *   [JavaScript Cheat Sheet](https://www.geeksforgeeks.org/javascript-cheat-sheet-a-basic-guide-to-javascript/?ref=outind)
+        *   [React Cheat Sheet](https://www.geeksforgeeks.org/react-cheat-sheet/?ref=outind)
+        *   [Angular Cheat Sheet](https://www.geeksforgeeks.org/angular-cheat-sheet-a-basic-guide-to-angular/?ref=outind)
+        *   [jQuery Cheat Sheet](https://www.geeksforgeeks.org/jquery-cheat-sheet-a-basic-guide-to-jquery/?ref=outind)
+        *   [Bootstrap Cheat Sheet](https://www.geeksforgeeks.org/bootstrap-cheatsheet-a-basic-guide-to-bootstrap/?ref=outind)
+    *   [Learn Complete Web Development](https://www.geeksforgeeks.org/web-development/?ref=outind)
+*   Courses
+    *   [Coding for Everyone](https://www.geeksforgeeks.org/courses/coding-for-everyone?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+    *   [DSA to Development](https://www.geeksforgeeks.org/courses/dsa-to-development-coding-guide?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+    *   [Machine Learning & Data Science](https://www.geeksforgeeks.org/courses/data-science-live?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+    *   [Generative AI & ChatGPT](https://www.geeksforgeeks.org/courses/mastering-generative-ai-and-chat-gpt?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+    *   [Become AWS Certified](https://www.geeksforgeeks.org/courses/search?query=AWS&itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+    *   DSA Courses
+        *   [Data Structure & Algorithm(C++/JAVA)](https://www.geeksforgeeks.org/courses/dsa-self-paced?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+        *   [Data Structure & Algorithm(Python)](https://www.geeksforgeeks.org/courses/Data-Structures-With-Python?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+        *   [Data Structure & Algorithm(JavaScript)](https://www.geeksforgeeks.org/courses/data-structures-and-algorithms-in-javascript?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+    *   Programming Languages
+        *   [CPP](https://www.geeksforgeeks.org/courses/cpp-programming-basic-to-advanced?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+        *   [Java](https://www.geeksforgeeks.org/courses/Java-Programming-basic-to-advanced?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+        *   [Python](https://www.geeksforgeeks.org/courses/Python-Foundation?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+        *   [JavaScript](https://www.geeksforgeeks.org/courses/javascript?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+        *   [C](https://www.geeksforgeeks.org/courses/c-Programming-basic-to-advanced?itm_source=geeksforgeeks&itm_medium=main_header&itm_campaign=courses)
+
+*   [Numpy exercise](https://www.geeksforgeeks.org/python-numpy-practice-exercises-questions-and-solutions/?ref=shm)
+*   [pandas](https://www.geeksforgeeks.org/pandas-tutorial/?ref=shm)
+*   [Matplotlib](https://www.geeksforgeeks.org/matplotlib-tutorial/?ref=shm)
+*   [Seaborn](https://www.geeksforgeeks.org/python-seaborn-tutorial/?ref=shm)
+*   [Plotly](https://www.geeksforgeeks.org/python-plotly-tutorial/?ref=shm)
+*   [Bokeh](https://www.geeksforgeeks.org/python-bokeh-tutorial-interactive-data-visualization-with-bokeh/?ref=shm)
+*   [Data visulisation](https://www.geeksforgeeks.org/python-data-visualization-tutorial/?ref=shm)
+*   [EDA](https://www.geeksforgeeks.org/what-is-exploratory-data-analysis/?ref=shm)
+*   [Machin Learning](https://www.geeksforgeeks.org/machine-learning/?ref=shm)
+*   [Deep Learning](https://www.geeksforgeeks.org/deep-learning-tutorial/?ref=shm)
+*   [NLP](https://www.geeksforgeeks.org/natural-language-processing-nlp-tutorial/?ref=shm)
+*   [Data science](https://www.geeksforgeeks.org/data-science-tutorial/?ref=shm)
+*   [ML Tutorial](https://www.geeksforgeeks.org/machine-learning/?ref=shm)
+*   [ML Mathematics](https://www.geeksforgeeks.org/machine-learning-mathematics/?ref=shm)
+*   [Computer Vision](https://www.geeksforgeeks.org/computer-vision/?ref=shm)
+*   [computer vision projects](https://www.geeksforgeeks.org/computer-vision-projects/?ref=shm)
+*   [NLP project](https://www.geeksforgeeks.org/nlp-project-ideas-for-beginners/?ref=shm)
+*   [ML project](https://www.geeksforgeeks.org/machine-learning-projects/?ref=shm)
+Text for https://numpy.org/devdocs/reference/generated/numpy.argmax.html:Title: numpy.argmax — NumPy v2.2.dev0 Manual
+
+URL Source: https://numpy.org/devdocs/reference/generated/numpy.argmax.html
+
+Markdown Content:
+numpy.argmax — NumPy v2.2.dev0 Manual
+===============         
+
+[Skip to main content](https://numpy.org/devdocs/reference/generated/numpy.argmax.html#main-content)
+
+Back to top Ctrl+K
+
+ [![Image 1: NumPy v2.2.dev0 Manual - Home](https://numpy.org/devdocs/_static/numpylogo.svg) ![Image 2: NumPy v2.2.dev0 Manual - Home](https://numpy.org/devdocs/_static/numpylogo_dark.svg)](https://numpy.org/devdocs/index.html)
+
+*   [User Guide](https://numpy.org/devdocs/user/index.html)
+*   [API reference](https://numpy.org/devdocs/reference/index.html)
+*   [Building from source](https://numpy.org/devdocs/building/index.html)
+*   [Development](https://numpy.org/devdocs/dev/index.html)
+*   [Release notes](https://numpy.org/devdocs/release.html)
+*   [Learn](https://numpy.org/numpy-tutorials/)
+*   More
+    *   [NEPs](https://numpy.org/neps)
+
+\\`);
+
+Choose version
+
+*   [GitHub](https://github.com/numpy/numpy "GitHub")
+
+*   [User Guide](https://numpy.org/devdocs/user/index.html)
+*   [API reference](https://numpy.org/devdocs/reference/index.html)
+*   [Building from source](https://numpy.org/devdocs/building/index.html)
+*   [Development](https://numpy.org/devdocs/dev/index.html)
+*   [Release notes](https://numpy.org/devdocs/release.html)
+*   [Learn](https://numpy.org/numpy-tutorials/)
+*   [NEPs](https://numpy.org/neps)
+
+\\`);
+
+Choose version
+
+*   [GitHub](https://github.com/numpy/numpy "GitHub")
+
+Section Navigation
+
+*   [NumPy’s module structure](https://numpy.org/devdocs/reference/module_structure.html)
+
+*   [Array objects](https://numpy.org/devdocs/reference/arrays.html)
+
+*   [Universal functions (`ufunc`)](https://numpy.org/devdocs/reference/ufuncs.html)
+
+*   [Routines and objects by topic](https://numpy.org/devdocs/reference/routines.html)
+    
+    *   [Constants](https://numpy.org/devdocs/reference/constants.html)
+    *   [Array creation routines](https://numpy.org/devdocs/reference/routines.array-creation.html)
+    *   [Array manipulation routines](https://numpy.org/devdocs/reference/routines.array-manipulation.html)
+    *   [Bit-wise operations](https://numpy.org/devdocs/reference/routines.bitwise.html)
+    *   [String functionality](https://numpy.org/devdocs/reference/routines.strings.html)
+    *   [Datetime support functions](https://numpy.org/devdocs/reference/routines.datetime.html)
+    *   [Data type routines](https://numpy.org/devdocs/reference/routines.dtype.html)
+    *   [Mathematical functions with automatic domain](https://numpy.org/devdocs/reference/routines.emath.html)
+    *   [Floating point error handling](https://numpy.org/devdocs/reference/routines.err.html)
+    *   [Exceptions and Warnings (`numpy.exceptions`)](https://numpy.org/devdocs/reference/routines.exceptions.html)
+    *   [Discrete Fourier Transform (`numpy.fft`)](https://numpy.org/devdocs/reference/routines.fft.html)
+    *   [Functional programming](https://numpy.org/devdocs/reference/routines.functional.html)
+    *   [Input and output](https://numpy.org/devdocs/reference/routines.io.html)
+    *   [Indexing routines](https://numpy.org/devdocs/reference/routines.indexing.html)
+    *   [Linear algebra (`numpy.linalg`)](https://numpy.org/devdocs/reference/routines.linalg.html)
+    *   [Logic functions](https://numpy.org/devdocs/reference/routines.logic.html)
+    *   [Masked array operations](https://numpy.org/devdocs/reference/routines.ma.html)
+    *   [Mathematical functions](https://numpy.org/devdocs/reference/routines.math.html)
+    *   [Miscellaneous routines](https://numpy.org/devdocs/reference/routines.other.html)
+    *   [Polynomials](https://numpy.org/devdocs/reference/routines.polynomials.html)
+    *   [Random sampling (`numpy.random`)](https://numpy.org/devdocs/reference/random/index.html)
+    *   [Set routines](https://numpy.org/devdocs/reference/routines.set.html)
+    *   [Sorting, searching, and counting](https://numpy.org/devdocs/reference/routines.sort.html)
+        
+        *   [numpy.sort](https://numpy.org/devdocs/reference/generated/numpy.sort.html)
+        *   [numpy.lexsort](https://numpy.org/devdocs/reference/generated/numpy.lexsort.html)
+        *   [numpy.argsort](https://numpy.org/devdocs/reference/generated/numpy.argsort.html)
+        *   [numpy.ndarray.sort](https://numpy.org/devdocs/reference/generated/numpy.ndarray.sort.html)
+        *   [numpy.sort\\_complex](https://numpy.org/devdocs/reference/generated/numpy.sort_complex.html)
+        *   [numpy.partition](https://numpy.org/devdocs/reference/generated/numpy.partition.html)
+        *   [numpy.argpartition](https://numpy.org/devdocs/reference/generated/numpy.argpartition.html)
+        *   [numpy.argmax](https://numpy.org/devdocs/reference/generated/numpy.argmax.html#)
+        *   [numpy.nanargmax](https://numpy.org/devdocs/reference/generated/numpy.nanargmax.html)
+        *   [numpy.argmin](https://numpy.org/devdocs/reference/generated/numpy.argmin.html)
+        *   [numpy.nanargmin](https://numpy.org/devdocs/reference/generated/numpy.nanargmin.html)
+        *   [numpy.argwhere](https://numpy.org/devdocs/reference/generated/numpy.argwhere.html)
+        *   [numpy.nonzero](https://numpy.org/devdocs/reference/generated/numpy.nonzero.html)
+        *   [numpy.flatnonzero](https://numpy.org/devdocs/reference/generated/numpy.flatnonzero.html)
+        *   [numpy.where](https://numpy.org/devdocs/reference/generated/numpy.where.html)
+        *   [numpy.searchsorted](https://numpy.org/devdocs/reference/generated/numpy.searchsorted.html)
+        *   [numpy.extract](https://numpy.org/devdocs/reference/generated/numpy.extract.html)
+        *   [numpy.count\\_nonzero](https://numpy.org/devdocs/reference/generated/numpy.count_nonzero.html)
+        
+    *   [Statistics](https://numpy.org/devdocs/reference/routines.statistics.html)
+    *   [Test support (`numpy.testing`)](https://numpy.org/devdocs/reference/routines.testing.html)
+    *   [Window functions](https://numpy.org/devdocs/reference/routines.window.html)
+    
+
+*   [Typing (`numpy.typing`)](https://numpy.org/devdocs/reference/typing.html)
+*   [Packaging (`numpy.distutils`)](https://numpy.org/devdocs/reference/distutils.html)
+
+*   [NumPy C-API](https://numpy.org/devdocs/reference/c-api/index.html)
+
+*   [Array API standard compatibility](https://numpy.org/devdocs/reference/array_api.html)
+*   [CPU/SIMD optimizations](https://numpy.org/devdocs/reference/simd/index.html)
+*   [Thread Safety](https://numpy.org/devdocs/reference/thread_safety.html)
+*   [Global Configuration Options](https://numpy.org/devdocs/reference/global_state.html)
+*   [NumPy security](https://numpy.org/devdocs/reference/security.html)
+*   [Status of `numpy.distutils` and migration advice](https://numpy.org/devdocs/reference/distutils_status_migration.html)
+*   [`numpy.distutils` user guide](https://numpy.org/devdocs/reference/distutils_guide.html)
+*   [NumPy and SWIG](https://numpy.org/devdocs/reference/swig.html)
+
+*   [](https://numpy.org/devdocs/index.html)
+*   [NumPy reference](https://numpy.org/devdocs/reference/index.html)
+*   [Routines and objects by topic](https://numpy.org/devdocs/reference/routines.html)
+*   [Sorting, searching, and counting](https://numpy.org/devdocs/reference/routines.sort.html)
+*   numpy.argmax
+
+numpy.argmax[#](https://numpy.org/devdocs/reference/generated/numpy.argmax.html#numpy-argmax "Link to this heading")
+====================================================================================================================
+
+numpy.argmax(_a_, _axis=None_, _out=None_, _\\*_, _keepdims=<no value\\>_)[\\[source\\]](https://github.com/numpy/numpy/blob/main/numpy/_core/fromnumeric.py#L1252-L1343)[#](https://numpy.org/devdocs/reference/generated/numpy.argmax.html#numpy.argmax "Link to this definition")
+
+Returns the indices of the maximum values along an axis.
+
+Parameters:
+
+**a**array\\_like
+
+Input array.
+
+**axis**int, optional
+
+By default, the index is into the flattened array, otherwise along the specified axis.
+
+**out**array, optional
+
+If provided, the result will be inserted into this array. It should be of the appropriate shape and dtype.
+
+**keepdims**bool, optional
+
+If this is set to True, the axes which are reduced are left in the result as dimensions with size one. With this option, the result will broadcast correctly against the array.
+
+New in version 1.22.0.
+
+Returns:
+
+**index\\_array**ndarray of ints
+
+Array of indices into the array. It has the same shape as `a.shape` with the dimension along _axis_ removed. If _keepdims_ is set to True, then the size of _axis_ will be 1 with the resulting array having same shape as `a.shape`.
+
+See also
+
+[`ndarray.argmax`](https://numpy.org/devdocs/reference/generated/numpy.ndarray.argmax.html#numpy.ndarray.argmax "numpy.ndarray.argmax"), [`argmin`](https://numpy.org/devdocs/reference/generated/numpy.argmin.html#numpy.argmin "numpy.argmin")
+
+[`amax`](https://numpy.org/devdocs/reference/generated/numpy.amax.html#numpy.amax "numpy.amax")
+
+The maximum value along a given axis.
+
+[`unravel_index`](https://numpy.org/devdocs/reference/generated/numpy.unravel_index.html#numpy.unravel_index "numpy.unravel_index")
+
+Convert a flat index into an index tuple.
+
+[`take_along_axis`](https://numpy.org/devdocs/reference/generated/numpy.take_along_axis.html#numpy.take_along_axis "numpy.take_along_axis")
+
+Apply `np.expand_dims(index_array, axis)` from argmax to an array as if by calling max.
+
+Notes
+
+In case of multiple occurrences of the maximum values, the indices corresponding to the first occurrence are returned.
+
+Examples
+
+\\>\\>\\> import numpy as np
+\\>\\>\\> a \\= np.arange(6).reshape(2,3) + 10
+\\>\\>\\> a
+array(\\[\\[10, 11, 12\\],
+       \\[13, 14, 15\\]\\])
+\\>\\>\\> np.argmax(a)
+5
+\\>\\>\\> np.argmax(a, axis\\=0)
+array(\\[1, 1, 1\\])
+\\>\\>\\> np.argmax(a, axis\\=1)
+array(\\[2, 2\\])
+
+Indexes of the maximal elements of a N-dimensional array:
+
+\\>\\>\\> ind \\= np.unravel\\_index(np.argmax(a, axis\\=None), a.shape)
+\\>\\>\\> ind
+(1, 2)
+\\>\\>\\> a\\[ind\\]
+15
+
+\\>\\>\\> b \\= np.arange(6)
+\\>\\>\\> b\\[1\\] \\= 5
+\\>\\>\\> b
+array(\\[0, 5, 2, 3, 4, 5\\])
+\\>\\>\\> np.argmax(b)  \\# Only the first occurrence is returned.
+1
+
+\\>\\>\\> x \\= np.array(\\[\\[4,2,3\\], \\[1,0,3\\]\\])
+\\>\\>\\> index\\_array \\= np.argmax(x, axis\\=-1)
+\\>\\>\\> \\# Same as np.amax(x, axis=-1, keepdims=True)
+\\>\\>\\> np.take\\_along\\_axis(x, np.expand\\_dims(index\\_array, axis\\=-1), axis\\=-1)
+array(\\[\\[4\\],
+       \\[3\\]\\])
+\\>\\>\\> \\# Same as np.amax(x, axis=-1)
+\\>\\>\\> np.take\\_along\\_axis(x, np.expand\\_dims(index\\_array, axis\\=-1),
+...     axis\\=-1).squeeze(axis\\=-1)
+array(\\[4, 3\\])
+
+Setting _keepdims_ to _True_,
+
+\\>\\>\\> x \\= np.arange(24).reshape((2, 3, 4))
+\\>\\>\\> res \\= np.argmax(x, axis\\=1, keepdims\\=True)
+\\>\\>\\> res.shape
+(2, 1, 4)
+
+[previous numpy.argpartition](https://numpy.org/devdocs/reference/generated/numpy.argpartition.html "previous page")[next numpy.nanargmax](https://numpy.org/devdocs/reference/generated/numpy.nanargmax.html "next page")
+
+On this page
+
+*   [`argmax`](https://numpy.org/devdocs/reference/generated/numpy.argmax.html#numpy.argmax)
+
+© Copyright 2008-2024, NumPy Developers.
+
+Created using [Sphinx](https://www.sphinx-doc.org/) 7.2.6.
+
+Built with the [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html) 0.16.0rc0.
+'

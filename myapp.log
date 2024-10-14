@@ -1,0 +1,48 @@
+INFO:root:WRITE SPEC CALLED FOR: foo WITH DEPTH: 0
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+INFO:groq._base_client:Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+INFO:groq._base_client:Retrying request to /openai/v1/chat/completions in 12.000000 seconds
+INFO:root:WRITE SPEC CALLED FOR: foo WITH DEPTH: 0
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:WRITE SPEC CALLED FOR: bar WITH DEPTH: 1
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:'  "function_name": "bar"\n  "inputs": [\n    {\n      "name": "b",\n      "type": "int",\n      "domain": "Any integer value"\n    }\n  ],\n  "return": [\n    {\n      "type": "int",\n      "domain": "The value of the input parameter b"\n    }\n  ],\n  "side_effects": [\n    {\n      "description": "Changes the value of the global variable a",\n      "condition": "",\n      "origin": "a = 2 in the function"\n    }\n  ],\n  "dependencies": []\n}'
+INFO:root:FINISHED WRITE SPEC CALLED FOR: bar WITH DEPTH: 1
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:WRITE SPEC CALLED FOR: foo WITH DEPTH: 1
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:'  "function_name": "bar"\n  "inputs": [\n    {\n      "name": "b",\n      "type": "int",\n      "domain": "Any integer value"\n    }\n  ],\n  "return": [\n    {\n      "type": "int",\n      "domain": "The value of the input parameter b"\n    }\n  ],\n  "side_effects": [\n    {\n      "description": "Changes the value of the global variable a",\n      "condition": "",\n      "origin": "a = 2"\n    }\n  ],\n  "dependencies": []\n} '
+INFO:root:FINISHED WRITE SPEC CALLED FOR: foo WITH DEPTH: 1
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+INFO:groq._base_client:Retrying request to /openai/v1/chat/completions in 2.000000 seconds
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:root:CHAT REQ END
+INFO:root:CHAT REQ SENT
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+INFO:groq._base_client:Retrying request to /openai/v1/chat/completions in 12.000000 seconds

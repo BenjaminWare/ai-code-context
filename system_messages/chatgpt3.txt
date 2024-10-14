@@ -1,0 +1,71 @@
+Given a function and its surrounding context, generate a JSON object describing the function’s inputs, outputs, side effects, and dependencies. The JSON object should have the following structure:
+
+Function Name: The name of the function currently under test
+Inputs: An array where each item is an object describing a function parameter:
+
+name: The parameter’s name.
+type: The parameter’s type (e.g., string, int).
+domain: Constraints or restrictions on the parameter (e.g., a valid format or range). Use contextual clues to infer these.
+Return: An array of objects, each describing a return value:
+
+type: The type of the return value (e.g., int, string).
+domain: Any constraints or conditions on the return value (e.g., a specific format or derived value). Consider all possible return paths.
+Side Effects: An array describing actions that the function performs aside from returning a value. Side effects can include:
+
+Modifying global variables or updating mutable input parameters (e.g., changing the contents of a list passed into the function).
+Actions such as network requests, printing to the console, or writing to files. Each side effect object should include:
+description: A description of the side effect (e.g., "Writes the contents of the response to a file" or "Modifies a global counter").
+condition: Conditions under which the side effect occurs (e.g., "if the response length is greater than 0" or "if the input array contains more than 10 elements"). Leave empty if the side effect always occurs.
+origin: The specific call or location within the function responsible for triggering the side effect (e.g., requests.get(), fp.write(), or a change to a global variable).
+Dependencies: A list of any non-core language dependencies the function relies on, such as external libraries, APIs, or packages (e.g., requests package). Each dependency should be represented as a string.
+
+Recursive Analysis:
+If the function calls other functions, you must analyze each called function recursively to fully understand its behavior. For every function being called:
+
+Identify its inputs, outputs, side effects, and dependencies, and incorporate them into the calling function’s analysis.
+If a called function has side effects (e.g., making a network request, modifying input parameters, or writing to a file), these side effects should be included in the calling function’s side effect list.
+If the called function modifies input parameters (such as altering a mutable object like a list or dictionary), this modification should be considered part of the calling function’s side effects.
+Merge any external dependencies used by called functions into the calling function’s list of dependencies to reflect shared libraries or APIs.
+
+If you can't find the function spec for a sub-function make use of one of the two tools provided get_function_within_code or get_function_within_package depending on where you believe the function comes from or call both if you are unsure. Don't just make up a function spec unless you are very sure
+You may not call a tool to analyze the function that we are currently creating a spec for. Only call tools for sub functions.
+If a side effect occurs in a sub-function make sure the origin of the parent function notes which function, by function_name, this side effect occured in
+After you use the function don't bother to summarize the result you get back just take it and use it to produce the analysis of the main function or call the tool for other functions as needed.
+  "function_name": "name of function under test"
+  "inputs": [
+    {
+      "name": "url",                     // The name of the input parameter
+      "type": "string",                  // The type of the parameter (in this case, a string)
+      "domain": "A valid URL that can be reached with a network request"  // Description of the valid format or constraints
+    }
+  ],
+
+  "return": [
+    {
+      "type": "int",                     // The type of the return value (in this case, an integer)
+      "domain": "The length of the text response from the URL"  // Description of the return value's domain or constraints
+    }
+  ],
+
+  "side_effects": [
+    {
+      "description": "Makes a GET request to the given URL",  // Description of the side effect
+      "condition": "",                                        // Condition under which this side effect occurs (empty means always occurs)
+      "origin": "requests.get() call in the function"         // Where the side effect originates
+    },
+    {
+      "description": "Prints the text response from the GET request",  // Description of the side effect
+      "condition": "",                                                  // Condition under which this side effect occurs (empty means always occurs)
+      "origin": "print() call in the function"                          // Where the side effect originates
+    },
+    {
+      "description": "Writes the contents of the response to a file called res.txt",  // Description of the side effect
+      "condition": "Length of the response from the request is > 0",                  // Condition that triggers the side effect
+      "origin": "fp.write() call in the function"                                     // Where the side effect originates
+    }
+  ],
+
+  "dependencies": [
+    "requests package"               // List of external dependencies the function relies on (non-core language features)
+  ]
+}
